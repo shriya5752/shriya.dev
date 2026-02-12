@@ -2,6 +2,9 @@ baseURL: "https://shriyamohanty.github.io/"
 title: "shriya.dev"
 #theme: "PaperMod"
 
+disableKinds:
+  - JSON
+
 languageCode: "en-us"
 defaultContentLanguage: "en"
 hasCJKLanguage: false
@@ -125,3 +128,5 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+    
