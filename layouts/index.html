@@ -121,6 +121,221 @@
   </div>
 </section>
 
+<!-- YouTube Videos Section -->
+<section class="youtube-section">
+  <div class="youtube-container">
+    <div class="youtube-header">
+      <span class="youtube-icon">🎬</span>
+      <h2 class="youtube-title">my youtube videos.</h2>
+    </div>
+    
+    <div class="videos-grid">
+      <!-- Video 1 - REPLACE WITH YOUR VIDEO ID -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/cqNLHiONBTg"
+            title="YouTube video 1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Video Title 1</h3>
+          <p class="video-desc">Brief description of your video</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/C92XRRU7gAc"
+            title="YouTube video 2" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Video Title 2</h3>
+          <p class="video-desc">Brief description of your video</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" 
+            title="YouTube video 3" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Video Title 3</h3>
+          <p class="video-desc">Brief description of your video</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- View More Button -->
+    <div class="view-more-container">
+      <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" class="view-more-btn">
+        <span>View All Videos</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+/* ===== YOUTUBE SECTION ===== */
+.youtube-section {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.youtube-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, #F5F1E8, transparent);
+  pointer-events: none;
+}
+
+.youtube-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.youtube-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.youtube-icon {
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.youtube-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 4rem);
+  color: #FFF;
+  font-weight: 700;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.video-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.video-card:nth-child(1) { animation-delay: 0.1s; }
+.video-card:nth-child(2) { animation-delay: 0.2s; }
+.video-card:nth-child(3) { animation-delay: 0.3s; }
+
+.video-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.video-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #704214;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.video-desc {
+  color: #8B7F73;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.view-more-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.view-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: white;
+  color: #704214;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.view-more-btn:hover {
+  background: #704214;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.view-more-btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.view-more-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+
+
+
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
