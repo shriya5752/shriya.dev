@@ -1,6 +1,4 @@
-# data/notes.yaml
 semesters:
-
   - name: "Semester 2"
     year: "2025"
     subjects: 3
