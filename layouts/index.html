@@ -96,33 +96,32 @@
       <div class="about-text">
         <p class="intro-text">
           hi, i'm shriya 👋<br><br>
-          i'm a curious engineering student based in bengaluru. i love exploring how things work — whether through building tech projects, learning new concepts, or breaking down complex ideas into something simple and relatable.
+          I like taking things apart — ideas, systems, problems — and figuring out what makes them tick. I like to build stuff, explore new concepts, and turn complex things into something people can actually understand.
         </p>
-        <p class="philosophy-text">
-          i'm drawn to the intersection of technology and creativity. i don't chase perfection — i care more about progress, curiosity, and building things that help people.
+        <p class="intro-text">
+          i'm drawn to the intersection of technology and creativity. lately, i've been sharing my notes and writing about the tech fields that spark me — one idea at a time.
+
+If you’re working on something interesting, I’d love to hear about it.
         </p>
       </div>
+
+
+
+
+	  
       
       <div class="about-visual">
         <div class="photo-collage">
           <div class="photo-item photo-1">
-            <img src="/images/img1.jpg" alt="Photo 1" class="collage-photo">
-          </div>
-          <div class="photo-item photo-2">
-            <img src="/images/img2.jpg" alt="Photo 2" class="collage-photo">
+            <img src="/images/img4.jpg" alt="Photo 4" class="collage-photo">
           </div>
           <div class="photo-item photo-3">
             <img src="/images/img3.jpg" alt="Photo 3" class="collage-photo">
           </div>
           <div class="photo-item photo-4">
-            <img src="/images/img4.jpg" alt="Photo 4" class="collage-photo">
+            <img src="/images/img1.jpg" alt="Photo 1" class="collage-photo">
           </div>
-          <div class="decorative-element id-card">🪪</div>
-          <div class="decorative-element flower">🌸</div>
-          <div class="decorative-element puppy">🐶</div>
-          <div class="decorative-element waffle">🧇</div>
-          <div class="decorative-element propeller">🚁</div>
-          <div class="decorative-element cherry">🍒</div>
+         
         </div>
       </div>
     </div>
@@ -629,96 +628,84 @@ body {
   align-items: center;
 }
 
+/* Container next to about section */
+/* Bigger collage + closer to text */
 .photo-collage {
   position: relative;
-  width: 550px;
-  height: 500px;
+  width: 520px;     /* bigger */
+  height: 450px;    /* bigger */
+  margin-left: 10px; /* closer to text */
+  margin-top: -20px; /* vertically aligned with heading */
 }
 
+/* Base style */
 .photo-item {
   position: absolute;
   background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(112, 66, 20, 0.15);
-  padding: 12px;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 12px 35px rgba(112, 66, 20, 0.18);
+  border: 3px solid rgba(112, 66, 20, 0.12);
   transition: all 0.3s ease;
-  border: 3px solid rgba(112, 66, 20, 0.1);
-  opacity: 1;
-  transform: scale(0.8);
 }
 
-.photo-item.animate-in {
-  animation: photoFadeIn 0.6s ease forwards;
-}
-
+/* Hover */
 .photo-item:hover {
-  transform: scale(1.05) rotate(0deg) !important;
-  box-shadow: 0 15px 40px rgba(112, 66, 20, 0.25);
-  z-index: 10;
+  transform: scale(1.06);
+  box-shadow: 0 18px 45px rgba(112, 66, 20, 0.25);
+  z-index: 20;
 }
 
+/* Image */
 .collage-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: 10px;
 }
 
-.photo-item:hover .collage-photo {
-  filter: brightness(1.1);
-}
+/* ---- Updated positions (bigger & more beautiful) ---- */
 
-.photo-1 {
-  width: 220px;
-  height: 200px;
-  top: 20px;
-  left: 20px;
-  z-index: 4;
-  animation-delay: 0.2s;
-}
-
-.photo-1.animate-in {
-  transform: rotate(-8deg);
-}
-
-.photo-2 {
-  width: 200px;
-  height: 300px;
+.photo-1 { /* left image */
+  width: 240px;
+  height: 310px;
   top: 40px;
-  right: 50px;
+  left: 0px;
+  transform: rotate(-6deg);
+  z-index: 4;
+}
+
+.photo-2 { /* right image */
+  width: 240px;
+  height: 280px;
+  top: 20px;
+  right: 20px;
+  transform: rotate(4deg);
+  z-index: 5;
+}
+
+.photo-3 { /* bottom image */
+  width: 260px;
+  height: 200px;
+  bottom: 10px;
+  left: 120px;   /* centered under the top two */
+  transform: rotate(-4deg);
   z-index: 3;
-  animation-delay: 0.4s;
 }
 
-.photo-2.animate-in {
-  transform: rotate(5deg);
-}
 
-.photo-3 {
-  width: 210px;
-  height: 190px;
-  bottom: 90px;
-  left: 40px;
+
+.photo-4 {
+  width: 240px;
+  height: 260px;
+  top: 50px;
+  right: 40px;
   z-index: 2;
   animation-delay: 0.6s;
 }
 
-.photo-3.animate-in {
-  transform: rotate(7deg);
-}
-
-.photo-4 {
-  width: 200px;
-  height: 180px;
-  bottom: 50px;
-  right: 30px;
-  z-index: 1;
-  animation-delay: 0.8s;
-}
-
 .photo-4.animate-in {
-  transform: rotate(-5deg);
+  transform: rotate(-4deg);
 }
 
 @keyframes photoFadeIn {
@@ -745,39 +732,40 @@ body {
   opacity: 1;
 }
 
-.id-card {
-  top: 60px;
-  right: 20px;
+.lightbulb {
+  top: 20px;
+  left: 60px;
   animation-delay: 0.5s;
 }
 
 .flower {
   top: 10px;
-  left: 180px;
+  left: 50%;
+  transform: translateX(-50%);
   animation-delay: 1s;
 }
 
-.puppy {
-  bottom: 30px;
-  left: 220px;
+.laptop {
+  top: 180px;
+  left: 20px;
   animation-delay: 1.5s;
 }
 
-.waffle {
-  bottom: 170px;
-  left: 220px;
+.star {
+  top: 60px;
+  right: 80px;
   animation-delay: 2s;
 }
 
-.propeller {
-  top: 200px;
-  right: 80px;
+.music {
+  bottom: 80px;
+  left: 160px;
   animation-delay: 2.5s;
 }
 
 .cherry {
-  bottom: 220px;
-  right: 100px;
+  bottom: 100px;
+  right: 60px;
   animation-delay: 3s;
 }
 
@@ -878,6 +866,7 @@ body {
   }
 }
 
+/* ===== FIXED MOBILE LAYOUT (480px and below) ===== */
 @media (max-width: 480px) {
   .floating-quote {
     display: none;
@@ -885,71 +874,96 @@ body {
   
   .section-title {
     font-size: 2.5rem;
-    line-height: 1.2; /* Better readability */
+    line-height: 1.2;
+    text-align: center;
   }
   
+  .about-content {
+    padding: 0 15px;
+  }
+  
+  /* FIX: Convert collage to grid layout on mobile */
   .photo-collage {
-    width: 100%;
-    max-width: 320px;
-    /* Remove fixed height to allow content to determine height */
-    display: grid; /* Use grid for better control */
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    gap: 6px;
-    margin: 0 auto; /* Center on mobile */
-  }
-  
-  .photo-item {
-    padding: 0; /* Remove padding, use gap instead */
     position: relative;
-    overflow: hidden;
-    border-radius: 8px; /* Optional: add rounded corners */
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 0 auto;
+    padding: 0;
   }
   
-  /* Use relative widths instead of fixed */
-  .photo-1,
-  .photo-2,
-  .photo-3,
-  .photo-4 {
+  /* FIX: Reset positioning for all photos */
+  .photo-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 0.75; /* Maintain consistent proportions */
+    padding: 8px;
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  /* Ensure photos stay in grid */
+  .photo-1,
+  .photo-3,
+  .photo-4 {
+    position: relative !important;
+  }
+  
+  /* Make photo-4 span both columns */
+  .photo-4 {
+    grid-column: 1 / -1;
+  }
+  
+  .photo-item:hover {
+    transform: scale(1.02) !important;
+  }
+  
+  .collage-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 0.8;
     object-fit: cover;
   }
   
-  /* Different aspect ratios for variety */
-  .photo-1 {
-    aspect-ratio: 0.75; /* 3:4 */
+  /* Adjust aspect ratios for variety */
+  .photo-1 .collage-photo {
+    aspect-ratio: 0.9;
   }
   
-  .photo-2 {
-    aspect-ratio: 0.86; /* ~6:7 */
+  .photo-3 .collage-photo {
+    aspect-ratio: 0.95;
   }
   
-  .photo-3 {
-    aspect-ratio: 0.92; /* ~11:12 */
+  .photo-4 .collage-photo {
+    aspect-ratio: 1.5;
   }
   
-  .photo-4 {
-    aspect-ratio: 0.75; /* 3:4 */
-  }
-  
+  /* Hide decorative elements on mobile */
   .decorative-element {
-    font-size: 1.5rem;
-    margin: 15px 0; /* Add spacing */
+    display: none;
   }
   
   .nav-button {
     padding: 16px 28px;
     font-size: 1rem;
-    width: 100%; /* Full width on mobile */
-    max-width: 300px; /* But cap the size */
-    margin: 0 auto; /* Center */
-    display: block; /* Better for mobile */
+    width: 100%;
+    max-width: 300px;
   }
   
   .button-icon {
     font-size: 1.1rem;
-    margin-right: 8px; /* Space between icon and text */
+  }
+  
+  .about-text {
+    text-align: center;
+    padding-right: 0;
   }
 }
 </style>
