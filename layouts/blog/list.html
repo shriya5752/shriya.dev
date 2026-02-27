@@ -1,4 +1,7 @@
 {{ define "main" }}
+<canvas id="constellation-canvas"></canvas>
+<div class="scroll-progress-bar"></div>
+
 <div class="blog-container">
   <header class="blog-header">
     <h1 class="blog-title">readme.md</h1>
@@ -57,7 +60,30 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 
-/* Match homepage background */
+/* ===== CONSTELLATION CANVAS ===== */
+#constellation-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #8B4513, #C9A961);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  border-radius: 0 2px 2px 0;
+}
+
 body {
   background: linear-gradient(135deg, #F5F1E8, #E8E2D5);
   min-height: 100vh;
@@ -68,6 +94,8 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-header {
@@ -106,6 +134,8 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .post-card:hover {
@@ -199,6 +229,8 @@ body {
 .no-posts {
   text-align: center;
   padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .no-posts-icon {
@@ -227,4 +259,125 @@ body {
   }
 }
 </style>
+
+<script>
+// ===== SCROLL PROGRESS BAR =====
+const progressBar = document.querySelector('.scroll-progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
+});
+
+// ===== CONSTELLATION =====
+const canvas = document.getElementById('constellation-canvas');
+const ctx = canvas.getContext('2d');
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let dots = [];
+const DOT_COUNT = 55;
+const MAX_DIST = 140;
+const MOUSE_DIST = 180;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', () => { resizeCanvas(); initDots(); });
+
+function initDots() {
+  dots = [];
+  for (let i = 0; i < DOT_COUNT; i++) {
+    dots.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 2 + 1
+    });
+  }
+}
+initDots();
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  dots.forEach(dot => {
+    dot.x += dot.vx;
+    dot.y += dot.vy;
+    if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+    if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(139, 69, 19, 0.3)';
+    ctx.fill();
+  });
+
+  for (let i = 0; i < dots.length; i++) {
+    for (let j = i + 1; j < dots.length; j++) {
+      const dx = dots[i].x - dots[j].x;
+      const dy = dots[i].y - dots[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MAX_DIST) {
+        ctx.beginPath();
+        ctx.moveTo(dots[i].x, dots[i].y);
+        ctx.lineTo(dots[j].x, dots[j].y);
+        ctx.strokeStyle = `rgba(139, 69, 19, ${0.12 * (1 - dist / MAX_DIST)})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+
+    const mdx = dots[i].x - mouseX;
+    const mdy = dots[i].y - mouseY;
+    const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+    if (mDist < MOUSE_DIST) {
+      ctx.beginPath();
+      ctx.moveTo(dots[i].x, dots[i].y);
+      ctx.lineTo(mouseX, mouseY);
+      ctx.strokeStyle = `rgba(139, 69, 19, ${0.35 * (1 - mDist / MOUSE_DIST)})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  requestAnimationFrame(draw);
+}
+draw();
+
+// ===== CURSOR TRAIL =====
+const TRAIL_LENGTH = 12;
+const trailDots = [];
+for (let i = 0; i < TRAIL_LENGTH; i++) {
+  const dot = document.createElement('div');
+  dot.style.cssText = `
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    transform: translate(-50%, -50%);
+    background: rgba(139, 69, 19, ${0.6 - i * 0.05});
+    width: ${8 - i * 0.5}px;
+    height: ${8 - i * 0.5}px;
+    transition: left ${0.05 + i * 0.03}s ease, top ${0.05 + i * 0.03}s ease;
+  `;
+  document.body.appendChild(dot);
+  trailDots.push(dot);
+}
+
+document.addEventListener('mousemove', (e) => {
+  trailDots.forEach(dot => {
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+  });
+});
+</script>
+
 {{ end }}
