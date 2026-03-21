@@ -1,4 +1,56 @@
 semesters:
+  - name: "Semester 1"
+    slug: sem1
+    year: "2024"
+    subjects: 4
+    icon: "⭐ "
+    color: "#0070f3"
+    
+    tips: |
+      ## the honest take
+      sem 1 is where it all starts. it's an adjustment — new place, new pace, new everything. the subjects feel disconnected at first but stick with them, it gets better.
+
+      ## engineering physics (probably the hardest one)
+      theory is where most people get caught off guard — the numericals are honestly fine once you get the hang of them, but the conceptual stuff will sneak up on you if you're not careful.
+
+      - refer **vibha and hitesh's notes** — they're the move for this subject
+      - don't just solve problems and move on, understand what's actually happening physically
+      - quantum mechanics especially — wavefunctions, uncertainty principle — needs intuition not just formulas
+
+      ⭐ **Looking Glass Universe** — genuinely the best for building QM intuition, start here
+      ⭐ **Michel van Biezen** — very exam-oriented, walks through problems step by step
+      ⭐ **Neso Academy** — solid for concepts and revision
+
+      ## electrical and electronics engineering (slides aren't bad actually)
+      this one depends a lot on your professor, but the slides are decent enough to work with.
+
+      - practice questions yourself before looking at solutions — that's how it sticks
+      - discuss with friends, talk through problems, teach each other
+      - don't hesitate to ask your teacher — this subject rewards curiosity
+
+      the key is learning by doing, not just watching or reading.
+
+      ## engineering mechanics (just deal with it)
+      very theoretical with some numericals thrown in that can get genuinely confusing. not the most exciting subject — just something you have to get through.
+
+      - make your **own short notes** and keep going back to them, seriously
+      - be familiar with problem types — you don't need to love it, you need to recognise patterns
+      - please try to stay awake through the slides. try.
+
+      ## python programming (trickier than it looks)
+      the exams will catch you if you're just memorising. understanding is everything here.
+
+      - write the **syntax yourself**, don't just read it
+      - go through **edge cases** — the exam loves them
+      - analyse everything, don't just run code and move on
+      - **Jenny's Lectures CS IT** — follow her, she explains everything clearly and in order
+
+      ## general sem 1 advice
+      - sem 1 is the adjustment semester. give yourself time to find your rhythm.
+      - the first two sems are your best shot at a strong CGPA foundation — don't sleep on it
+      - physics theory will get to you if you leave it late, start early
+      - for python and EEE: doing beats reading every time
+    
   - name: "Semester 2"
     slug: sem2
     year: "2025"
