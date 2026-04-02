@@ -60,9 +60,9 @@
 
       
       <div class="semester-footer">
-        <button class="folder-link" onclick="showNoNotes()">
+        <a href="" class="folder-link" target="_blank" rel="noopener noreferrer">
           open Semester 1 folder →
-        </button>
+        </a>
         
         <button class="tips-link" onclick="openTips('sem1')">
           tips for this sem →
@@ -423,30 +423,6 @@
 </div>
 
 
-<!-- No-notes toast -->
-<div id="no-notes-toast" style="
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: #5C3317;
-  color: #fff;
-  padding: 0.85rem 1.75rem;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  z-index: 99999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-">
-  no notes for this sem, sorry! check the tips instead ✨
-</div>
-
-
 <div class="tips-modal-overlay" id="tips-modal" onclick="closeTips(event)">
   <div class="tips-modal">
     <button class="tips-modal-close" onclick="closeTipsBtn()">✕</button>
@@ -656,10 +632,6 @@ body {
   text-decoration: none;
   border-radius: 100px;
   font-weight: 500;
-  font-size: 1rem;
-  font-family: 'DM Sans', sans-serif;
-  border: none;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -1005,18 +977,6 @@ function closeTips(e) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeTipsBtn();
 });
-
-let toastTimer = null;
-function showNoNotes() {
-  const toast = document.getElementById('no-notes-toast');
-  toast.style.opacity = '1';
-  toast.style.transform = 'translateX(-50%) translateY(0)';
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(-50%) translateY(20px)';
-  }, 3000);
-}
 </script>
 
     
